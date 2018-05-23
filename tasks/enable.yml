@@ -1,0 +1,30 @@
+---
+- name: Ensure swap file exists.
+  command: >
+    {{ swap_file_create_command }}
+    creates='{{ swap_file_path }}'
+  register: swap_file_create
+
+- name: Set permissions on swap file.
+  file:
+    path: "{{ swap_file_path }}"
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Make swap file if necessary.
+  command: mkswap {{ swap_file_path }}
+  when: swap_file_create is changed
+  register: mkswap_result
+
+- name: Run swapon on the swap file.
+  command: swapon {{ swap_file_path }}
+  when:
+    - mkswap_result is changed
+    - not swap_test_mode
+
+- name: Set swapiness.
+  sysctl:
+    name: vm.swappiness
+    value: "{{ swap_swappiness }}"
+    state: present

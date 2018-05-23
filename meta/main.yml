@@ -1,0 +1,32 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: geerlingguy
+  description: Swap file and swap management for Linux.
+  issue_tracker_url: https://github.com/geerlingguy/ansible-role-swap/issues
+  company: "Midwestern Mac, LLC"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+  - name: EL
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - system
+    - server
+    - swap
+    - swapfile
+    - pagefile
+    - performance
+    - memory
+    - ram

@@ -1,0 +1,8 @@
+---
+- name: Disable swap (if configured).
+  command: swapoff -a
+
+- name: Ensure swap file doesn't exist (if configured).
+  file:
+    path: "{{ swap_file_path }}"
+    state: absent

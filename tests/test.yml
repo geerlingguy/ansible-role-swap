@@ -1,0 +1,14 @@
+---
+- hosts: all
+
+  vars:
+    swap_file_size_mb: '256'
+    swap_test_mode: True
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - role_under_test
