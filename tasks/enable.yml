@@ -23,7 +23,7 @@
     - mkswap_result is changed
     - not swap_test_mode
 
-- name: Set swapiness.
+- name: Set swappiness.
   sysctl:
     name: vm.swappiness
     value: "{{ swap_swappiness }}"
