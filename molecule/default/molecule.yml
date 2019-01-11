@@ -15,6 +15,9 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
+  - name: debian-9
+    image: debian:9
+    privileged: true
 provisioner:
   name: ansible
   lint:
