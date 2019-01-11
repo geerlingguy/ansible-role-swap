@@ -23,6 +23,10 @@
     - mkswap_result is changed
     - not swap_test_mode
 
+- name: Install required dependency
+  package:
+    name: procps
+
 - name: Set swappiness.
   sysctl:
     name: vm.swappiness
