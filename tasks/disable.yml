@@ -1,6 +1,7 @@
 ---
 - name: Disable swap (if configured).
   command: swapoff -a
+  tags: ['skip_ansible_lint']
 
 - name: Ensure swap file doesn't exist (if configured).
   file:
