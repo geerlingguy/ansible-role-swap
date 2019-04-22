@@ -32,6 +32,10 @@ If you wish to _remove_ your swapfile, and disable swap, set this to `absent`. G
 
 The command used to create the swap file. You could switch to using `fallocate` to write the swap file more quickly, though there may be inconsistencies if not writing the file with `dd`.
 
+    swap_vfs_cache_pressure: 100
+
+The `vm.vfs_cache_pressure` value to be configured in sysconfig (optional).
+
 ## Dependencies
 
 None.
