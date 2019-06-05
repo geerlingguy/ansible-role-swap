@@ -4,7 +4,7 @@
     name: none
     src: "{{ swap_file_path }}"
     fstype: swap
-    opts: sw
+    opts: "sw,pri={{ swap_priority }}"
     passno: 0
     dump: 0
     state: "{{ swap_file_state }}"
