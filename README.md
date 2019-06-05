@@ -24,6 +24,10 @@ How large (in megabytes) to make the swap file.
 
 The `vm.swappiness` value to be configured in sysconfig.
 
+    swap_priority: -1
+
+The `swap_priority` value specify the priority of the swap device. Higher number means hihger priority.
+
     swap_file_state: present
 
 If you wish to _remove_ your swapfile, and disable swap, set this to `absent`. Generally you'd probably want to set this to `present`.
