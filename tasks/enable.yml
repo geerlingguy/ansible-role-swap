@@ -18,7 +18,7 @@
   register: mkswap_result
 
 - name: Run swapon on the swap file.
-  command: swapon {{ swap_file_path }}
+  command: swapon {{ swap_file_path }} -p {{ swap_priority }}
   when:
     - mkswap_result is changed
     - not swap_test_mode
