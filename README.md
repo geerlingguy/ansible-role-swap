@@ -26,7 +26,7 @@ The `vm.swappiness` value to be configured in sysconfig.
 
     swap_priority: -1
 
-The `swap_priority` value specify the priority of the swap device. Higher number means hihger priority.
+The `swap_priority` value specify the priority of the swap device. Higher number means higher priority.
 
     swap_file_state: present
 
