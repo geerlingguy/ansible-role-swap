@@ -20,7 +20,7 @@ The location of the swap file on the server.
 
 How large (in megabytes) to make the swap file.
 
-    swap_swappiness: 60
+    swap_swappiness: '60'
 
 The `vm.swappiness` value to be configured in sysconfig.
 
