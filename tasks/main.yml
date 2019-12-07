@@ -5,8 +5,6 @@
     src: "{{ swap_file_path }}"
     fstype: swap
     opts: sw
-    passno: 0
-    dump: 0
     state: "{{ swap_file_state }}"
 
 - include_tasks: disable.yml
