@@ -4,7 +4,7 @@
     name: none
     src: "{{ swap_file_path }}"
     fstype: swap
-    opts: sw
+    opts: "{{ swap_mount_opts }}"
     state: "{{ swap_file_state }}"
 
 - include_tasks: disable.yml

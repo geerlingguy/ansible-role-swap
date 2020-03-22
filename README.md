@@ -32,6 +32,10 @@ If you wish to _remove_ your swapfile, and disable swap, set this to `absent`. G
 
 The command used to create the swap file. You could switch to using `fallocate` to write the swap file more quickly, though there may be inconsistencies if not writing the file with `dd`.
 
+Mount options for the swap file entry in fstab can be customised.
+
+    swap_mount_opts: sw
+
 ## Dependencies
 
 None.
