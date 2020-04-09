@@ -30,7 +30,11 @@ If you wish to _remove_ your swapfile, and disable swap, set this to `absent`. G
 
     swap_file_create_command: "dd if=/dev/zero of={{ swap_file_path }} bs=1M count={{ swap_file_size_mb }}"
 
-The command used to create the swap file. You could switch to using `fallocate` to write the swap file more quickly, though there may be inconsistencies if not writing the file with `dd`.
+The command used to create the swap file. You could switch to using `fallocate` to write the swap file more quickly like this:
+
+    swap_file_create_command: "fallocate --length {{ swap_file_size_mb }}MB {{ swap_file_path }}"
+    
+however that is not universally advised. See the [final paragraph in the NOTES section of the mkswap man page](https://manpages.debian.org/buster/util-linux/mkswap.8.en.html#NOTES) for a discussion.
 
 ## Dependencies
 
