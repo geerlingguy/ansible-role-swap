@@ -18,7 +18,7 @@ The location of the swap file on the server.
 
     swap_file_size_mb: '512'
 
-How large (in megabytes) to make the swap file.
+How large (in mebibytes) to make the swap file.
 
     swap_swappiness: '60'
 
