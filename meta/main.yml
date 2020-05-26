@@ -2,6 +2,7 @@
 dependencies: []
 
 galaxy_info:
+  role_name: swap
   author: geerlingguy
   description: Swap file and swap management for Linux.
   issue_tracker_url: https://github.com/geerlingguy/ansible-role-swap/issues
