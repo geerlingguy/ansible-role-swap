@@ -1,6 +1,6 @@
 # Ansible Role: Swap
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-swap.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-swap)
+[![Build Status](https://travis-ci.com/geerlingguy/ansible-role-swap.svg?branch=master)](https://travis-ci.com/geerlingguy/ansible-role-swap)
 
 An Ansible Role that configures swap space on Linux.
 
