@@ -3,6 +3,8 @@
   command: >
     {{ swap_file_create_command }}
     creates='{{ swap_file_path }}'
+  async: "{{ swap_file_create_timeout_in_seconds }}"
+  poll: "{{ swap_file_create_poll_period_in_seconds }}"
   register: swap_file_create
 
 - name: Set permissions on swap file.

@@ -32,6 +32,14 @@ If you wish to _remove_ your swapfile, and disable swap, set this to `absent`. G
 
 The command used to create the swap file. You could switch to using `fallocate` to write the swap file more quickly, though there may be inconsistencies if not writing the file with `dd`.
 
+Timeout (in seconds) on the creation of the swap file.
+
+    swap_file_create_timeout_in_seconds: 3600
+
+Period (in seconds) between checks on if the swap file has been created .
+
+    swap_file_create_poll_period_in_seconds: 5
+
 ## Dependencies
 
 None.
