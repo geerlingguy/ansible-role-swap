@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: Initial
   hosts: all
   become: true
 
@@ -11,6 +11,28 @@
     - name: Update apt cache.
       apt: update_cache=true cache_valid_time=600
       when: ansible_os_family == 'Debian'
+
+  roles:
+    - role: geerlingguy.swap
+
+- name: Grow
+  hosts: all
+  become: true
+
+  vars:
+    swap_file_size_mb: '512'
+    swap_test_mode: true
+
+  roles:
+    - role: geerlingguy.swap
+
+- name: Shrink
+  hosts: all
+  become: true
+
+  vars:
+    swap_file_size_mb: '256'
+    swap_test_mode: true
 
   roles:
     - role: geerlingguy.swap

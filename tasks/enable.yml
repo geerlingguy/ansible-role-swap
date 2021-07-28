@@ -1,9 +1,45 @@
 ---
+
+- name: Stat swap file
+  stat:
+    path: "{{ swap_file_path }}"
+    follow: true
+  register: 'swap_file'
+
+- name: Fail if swapfile exists but is not a regular file.
+  ansible.builtin.fail:
+    msg: "Swap file {{ swap_file_path }} exists but is neither a regular file nor a symlink to a regular file."
+  when:
+    - swap_file.stat.exists
+    - not swap_file.stat.isreg
+
+- name: Read used swapfiles.
+  read_csv:
+    path: '/proc/swaps'
+    key: 'file'
+    fieldnames: [ 'file' ]
+    delimiter: ' '
+  register: swapfiles
+
+- name: Disable swapfile before size change.
+  command: "swapoff {{ swap_file_path }}"
+  register: swap_file_size_change
+  when:
+    - swap_file.stat.exists
+    - swap_file_path in swapfiles.dict
+    - 'swap_file.stat.size != swap_file_size_mb * 1024 * 1024'
+
 - name: Ensure swap file exists.
-  command: >
-    {{ swap_file_create_command }}
-    creates='{{ swap_file_path }}'
+  command: "{{ swap_file_create_command }}"
   register: swap_file_create
+  when: not swap_file.stat.exists or swap_file.stat.size < swap_file_size_mb|int * 1024 * 1024
+
+- name: Ensure swap file is not too large.
+  command: "truncate -s {{ swap_file_size_mb }}M {{ swap_file_path }}"
+  register: swap_file_shrink
+  when:
+    - swap_file.stat.exists
+    - swap_file.stat.size > swap_file_size_mb|int * 1024 * 1024
 
 - name: Set permissions on swap file.
   file:
@@ -14,7 +50,7 @@
 
 - name: Make swap file if necessary.
   command: mkswap {{ swap_file_path }}
-  when: swap_file_create is changed
+  when: swap_file_create is changed or swap_file_shrink is changed
   register: mkswap_result
 
 - name: Run swapon on the swap file.
