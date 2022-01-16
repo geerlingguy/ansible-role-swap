@@ -4,7 +4,7 @@
   tags: ['skip_ansible_lint']
 
 - name: Disable swap permanently.
-  command: sudo sed -i '/ swap / s/^/#/' /etc/fstab
+  command: sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
   when: swap_off_persist == true
   tags: ['skip_ansible_lint']
 
