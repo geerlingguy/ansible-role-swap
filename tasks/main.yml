@@ -7,8 +7,12 @@
     opts: sw
     state: "{{ swap_file_state }}"
 
+- include_tasks: check-size.yml
+  when: swap_file_state == 'present'
+
 - include_tasks: disable.yml
   when: swap_file_state == 'absent'
+    or (swap_file_state == 'present' and swap_file_existing_size_mb != swap_file_size_mb)
 
 - include_tasks: enable.yml
   when: swap_file_state == 'present'
