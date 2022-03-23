@@ -7,3 +7,9 @@
   file:
     path: "{{ swap_file_path }}"
     state: absent
+
+- name: Disable swappiness.
+  sysctl:
+    name: vm.swappiness
+    value: 0
+    state: present
