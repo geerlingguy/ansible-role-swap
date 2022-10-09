@@ -18,7 +18,10 @@ The location of the swap file on the server.
 
     swap_file_size_mb: '512'
 
-How large (in mebibytes) to make the swap file.
+How large (in mebibytes) to make the swap file. Increasing this value after
+this task has already been run will *not* increase the swap size. You need to
+disable swap, run the playbook, and then rerun the playbook with swap enabled
+with the new swap size you'd like.
 
     swap_swappiness: '60'
 
