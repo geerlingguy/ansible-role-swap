@@ -2,6 +2,7 @@
 swap_file_path: /swapfile
 swap_file_size_mb: '512'
 swap_swappiness: '60'
+swap_vfs_cache_pressure: '50'
 swap_file_state: present
 swap_file_create_command: "dd if=/dev/zero of={{ swap_file_path }} bs=1M count={{ swap_file_size_mb }}"
 

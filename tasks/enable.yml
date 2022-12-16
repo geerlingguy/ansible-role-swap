@@ -28,3 +28,9 @@
     name: vm.swappiness
     value: "{{ swap_swappiness }}"
     state: present
+
+- name: Set vfs_cache_pressure
+  sysctl:
+    name: vm.vfs_cache_pressure
+    value: "{{ swap_vfs_cache_pressure }}"
+    state: present
