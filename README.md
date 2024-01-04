@@ -14,11 +14,11 @@ Available variables are listed below, along with default values (see `defaults/m
 
     swap_file_path: /swapfile
 
-The location of the swap file on the server.
+The location of the swap file on the server. This can also be a dedicated swap device.
 
     swap_file_size_mb: '512'
 
-How large (in mebibytes) to make the swap file.
+How large (in mebibytes) to make the swap file. Ignored if swap_file_path is a device (as we can't magically grow or shrink devices).
 
     swap_swappiness: '60'
 
@@ -39,10 +39,10 @@ None.
 ## Example Playbook
 
     - hosts: all
-    
+
       vars:
         swap_file_size_mb: '1024'
-    
+
       roles:
         - geerlingguy.swap
 
