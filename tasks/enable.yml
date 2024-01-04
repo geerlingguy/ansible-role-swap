@@ -12,9 +12,14 @@
     group: root
     mode: 0600
 
-- name: Make swap file if necessary.
+- name: Check if swap already mounted.
+  shell: cat /proc/swaps
+  register: procswaps
+  changed_when: False
+
+- name: Initialize swap space if not already active.
   command: mkswap {{ swap_file_path }}
-  when: swap_file_create is changed
+  when: procswaps.stdout.find(swap_file_path) == -1
   register: mkswap_result
 
 - name: Run swapon on the swap file.

@@ -7,3 +7,4 @@
   file:
     path: "{{ swap_file_path }}"
     state: absent
+  when: swap_file_check.stat.isblk == false

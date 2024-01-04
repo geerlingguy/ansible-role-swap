@@ -1,12 +1,16 @@
 ---
-- name: Check if swap file exists
+- name: Check if swap space exists
   stat:
     path: "{{ swap_file_path }}"
     get_checksum: false
   register: swap_file_check
   changed_when: false
 
+- name: Set variable for existing swap space type
+  set_fact:
+    swap_isblk: "{{ swap_file_check.stat.exists and swap_file_check.stat.isblk }}"
+
 - name: Set variable for existing swap file size
   set_fact:
     swap_file_existing_size_mb: "{{ (swap_file_check.stat.size / 1024 / 1024) | int }}"
-  when: swap_file_check.stat.exists
+  when: swap_file_check.stat.exists and swap_isblk == false
