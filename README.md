@@ -22,7 +22,7 @@ How large (in mebibytes) to make the swap file.
 
     swap_swappiness: '60'
 
-The `vm.swappiness` value to be configured in sysconfig.
+The `vm.swappiness` value to be configured in sysconfig. To keep the current `vm.swappiness` set this to a YAML null value (e.g. `swap_swappiness: null`).
 
     swap_file_state: present
 
