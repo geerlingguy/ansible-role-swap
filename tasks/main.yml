@@ -1,6 +1,6 @@
 ---
 - name: Manage swap file entry in fstab.
-  mount:
+  ansible.posix.mount:
     name: none
     src: "{{ swap_file_path }}"
     fstype: swap
