@@ -22,6 +22,10 @@ How large (in mebibytes) to make the swap file.
 
     swap_swappiness: '60'
 
+The mount options to use for the swap file.
+
+    swap_options: sw
+
 The `vm.swappiness` value to be configured in sysconfig.
 
     swap_file_state: present

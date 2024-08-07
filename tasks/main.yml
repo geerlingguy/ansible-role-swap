@@ -4,7 +4,7 @@
     name: none
     src: "{{ swap_file_path }}"
     fstype: swap
-    opts: sw
+    opts: "{{ swap_options }}"
     state: "{{ swap_file_state }}"
 
 - include_tasks: check-size.yml
