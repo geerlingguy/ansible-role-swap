@@ -8,3 +8,25 @@
   file:
     path: "{{ swap_file_path }}"
     state: absent
+
+- name: Check if zram swap service exists
+  command:
+    systemctl list-units --all --type=service --no-legend 'swap-create@zram*'
+  register: zram_service_check
+  changed_when: false
+  when: ansible_os_family == "RedHat"
+
+- name: Disable zram swap using systemd
+  systemd:
+    name: "{{ zram_service_check.stdout.split()[0] }}"
+    state: stopped
+    enabled: false
+  when:
+    - ansible_os_family == "RedHat"
+    - zram_service_check.stdout != ""
+
+- name: Remove zram-generator-defaults
+  package:
+    name: zram-generator-defaults
+    state: absent
+  when: ansible_os_family == "RedHat"

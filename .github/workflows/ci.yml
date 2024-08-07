@@ -7,6 +7,7 @@ name: CI
       - master
   schedule:
     - cron: "0 2 * * 2"
+  workflow_dispatch:
 
 defaults:
   run:
@@ -58,6 +59,9 @@ jobs:
 
       - name: Install test dependencies.
         run: pip3 install ansible molecule molecule-plugins[docker] docker
+
+      - name: Install role dependencies.
+        run: ansible-galaxy role install -r requirements.yml
 
       - name: Run Molecule tests.
         run: molecule test
