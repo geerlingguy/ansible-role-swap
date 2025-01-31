@@ -1,6 +1,6 @@
 # Ansible Role: Swap
 
-[![CI](https://github.com/geerlingguy/ansible-role-swap/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-swap/actions?query=workflow%3ACI)
+[![CI](https://github.com/geerlingguy/ansible-role-swap/actions/workflows/ci.yml/badge.svg)](https://github.com/geerlingguy/ansible-role-swap/actions/workflows/ci.yml)
 
 An Ansible Role that configures swap space on Linux.
 
