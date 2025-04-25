@@ -11,6 +11,7 @@
     owner: root
     group: root
     mode: 0600
+  when: not ansible_check_mode
 
 - name: Make swap file if necessary.
   command: mkswap {{ swap_file_path }}
