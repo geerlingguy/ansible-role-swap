@@ -12,7 +12,7 @@
 
 - include_tasks: disable.yml
   when: swap_file_state == 'absent'
-    or (swap_file_state == 'present' and swap_file_existing_size_mb != swap_file_size_mb)
+    or (swap_file_state == 'present' and (swap_file_existing_size_mb | int) != (swap_file_size_mb | int))
 
 - include_tasks: enable.yml
   when: swap_file_state == 'present'
