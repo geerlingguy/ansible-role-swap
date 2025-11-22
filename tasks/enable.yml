@@ -1,6 +1,6 @@
 ---
 - name: Ensure swap file exists.
-  command: "{{ swap_file_create_command }}"
+  shell: "{{ swap_file_create_command }}"
   args:
     creates: "{{ swap_file_path }}"
   register: swap_file_create
