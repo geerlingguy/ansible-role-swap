@@ -13,5 +13,5 @@
 
 - name: Set default value for existing swap file size when it doesn't exist
   set_fact:
-    swap_file_existing_size_mb: "{{ swap_file_size_mb }}"
+    swap_file_existing_size_mb: 0
   when: not swap_file_check.stat.exists
