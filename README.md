@@ -16,7 +16,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 The location of the swap file on the server.
 
-    swap_file_size_mb: '512'
+    swap_file_size_mb: 512
 
 How large (in mebibytes) to make the swap file.
 
