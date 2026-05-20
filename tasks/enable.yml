@@ -29,3 +29,4 @@
     name: vm.swappiness
     value: "{{ swap_swappiness }}"
     state: present
+    reload: false
