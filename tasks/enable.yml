@@ -29,3 +29,5 @@
     name: vm.swappiness
     value: "{{ swap_swappiness }}"
     state: present
+    sysctl_set: true
+    sysctl_file: "{{ swap_sysctl_file }}"

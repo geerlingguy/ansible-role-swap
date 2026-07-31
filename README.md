@@ -24,6 +24,10 @@ How large (in mebibytes) to make the swap file.
 
 The `vm.swappiness` value to be configured in sysconfig.
 
+    swap_sysctl_file: /etc/sysctl.d/90-swap.conf
+
+The sysctl file used to persist `vm.swappiness`.
+
     swap_file_state: present
 
 If you wish to _remove_ your swapfile, and disable swap, set this to `absent`. Generally you'd probably want to set this to `present`.
