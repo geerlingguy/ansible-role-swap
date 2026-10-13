@@ -24,6 +24,14 @@
     - mkswap_result is changed
     - not swap_test_mode
 
+- name: Ensure sysctl config directory exists.
+  file:
+    path: "{{ swap_sysctl_file | dirname }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Set swappiness.
   sysctl:
     name: vm.swappiness
