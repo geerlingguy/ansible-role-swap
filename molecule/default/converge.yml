@@ -4,6 +4,9 @@
   #become: true
 
   vars:
+    # Avoid /swapfile: /proc/swaps isn't namespaced, so mkswap inside the
+    # container sees the CI runner's own /swapfile and refuses to touch it.
+    swap_file_path: /swapfile-molecule
     swap_file_size_mb: '256'
     swap_test_mode: true
 
