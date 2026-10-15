@@ -4,6 +4,8 @@
   args:
     creates: "{{ swap_file_path }}"
   register: swap_file_create
+  async: 3600
+  poll: 15
 
 - name: Set permissions on swap file.
   file:
